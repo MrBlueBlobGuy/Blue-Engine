@@ -2,4 +2,6 @@ moderngl
 numpy
 pyglm
 pygame
+sphinx
 python-dotenv
+myst-parser
