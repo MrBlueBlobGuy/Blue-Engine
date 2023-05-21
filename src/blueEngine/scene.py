@@ -24,5 +24,6 @@ class Scene:
 
     def render(self):
         for obj in self.objects:
+            # print(obj.components['transform'])
             render_thread = threading.Thread(target=self.render_object, args=(obj,))
-            opt = render_thread.run()
+            render_thread.run()

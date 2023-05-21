@@ -3,3 +3,6 @@
 .editorconfig
 docs/
 __pycache__/
+build/
+dist/
+blue_engine.egg-info/
