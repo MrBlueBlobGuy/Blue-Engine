@@ -17,7 +17,7 @@ setup(
     author_email='debojyotiganguly70@gmail.com',
     license='Zlib',
     classifiers=[
-        "Licence :: OSI Approved :: Zlib Licence",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.10",
     ],
