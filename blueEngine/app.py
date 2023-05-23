@@ -9,7 +9,7 @@ from model import *
 from scene import Scene
 
 class app:
-    def __init__(self, size, title, framerate, flags=None) -> None:
+    def __init__(self, size, title, framerate, flags=None, icon_path = 'images/BlueEngineLogo.png') -> None:
         self.size = size
         self.title = title
         self.flags = flags
@@ -18,7 +18,7 @@ class app:
         self.scene = None
         self.camera = None
         self.light = None
-
+        self.icon = pygame.image.load(icon_path)
         self.time = 0
         self.delta_time = 0
 
@@ -28,11 +28,12 @@ class app:
 
     def run(self):
         pygame.init()
-        pygame.display.gl_set_attribute(pygame.GL_CONTEXT_MAJOR_VERSION, 3)
+        pygame.display.gl_set_attribute(pygame.GL_CONTEXT_MAJOR_VERSION, 4)
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_MINOR_VERSION, 3)
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_PROFILE_MASK, pygame.GL_CONTEXT_PROFILE_CORE)
         pygame.display.set_mode(self.size, flags=pygame.OPENGL|pygame.DOUBLEBUF|pygame.RESIZABLE)
         pygame.display.set_caption(self.title)
+        pygame.display.set_icon(self.icon)
         pygame.event.set_grab(True)
         pygame.mouse.set_visible(False)
 
@@ -51,7 +52,7 @@ class app:
     def loop(self):
         while True:
             self.get_time()
-            pygame.display.set_caption(f'{self.title} @ {self.clock.get_fps()}')
+            pygame.display.set_caption(f'{self.title} @ {int(self.clock.get_fps())} fps')
             self.render()
             self.camera.update()
             self.check_events()

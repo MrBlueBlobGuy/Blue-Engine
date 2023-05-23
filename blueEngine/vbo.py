@@ -73,5 +73,4 @@ class CubeVBO(BaseVBO):
         return vertex_data
 
 
-
     

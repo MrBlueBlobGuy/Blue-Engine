@@ -1,0 +1,6 @@
+{
+    "name":"vertical",
+    "positive_keys":[],
+    "negative_keys":[],
+    "clamp":[-1, 1]
+}

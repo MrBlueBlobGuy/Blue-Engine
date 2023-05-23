@@ -1,5 +1,7 @@
 import numpy as np
 import glm
+
+from errors import *
 from transfrom import Transfrom
 
 class BaseModel:
@@ -26,6 +28,11 @@ class BaseModel:
     def render(self):
         self.update()
         self.vao.render()
+    def get_component(self, component:str):
+        try:
+            return self.components[component]
+        except KeyError:
+            raise ChildComponentNotExistsException(component)
 
 class Cube(BaseModel):
     def __init__(self, app, vao_name='cube', tex_id=0, position = (0, 0, 0), rotation = (0, 0, 0), scale = (1, 1, 1)) -> None:
