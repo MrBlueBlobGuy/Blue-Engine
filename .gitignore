@@ -6,3 +6,5 @@ __pycache__/
 build/
 dist/
 blue_engine.egg-info/
+.github/
+sandbox/

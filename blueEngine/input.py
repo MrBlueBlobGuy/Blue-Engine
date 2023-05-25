@@ -39,9 +39,12 @@ keymap={
     '8':pygame.K_8,
     '9':pygame.K_9,
     '0':pygame.K_0,
-    'alt':pygame.K_LALT or pygame.K_RALT,
-    'ctrl':pygame.K_LCTRL or pygame.K_RCTRL,
-    'shift':pygame.K_LSHIFT or pygame.K_RSHIFT,
+    'Lalt':pygame.K_LALT,
+    'Ralt':pygame.K_RALT,
+    'Lctrl':pygame.K_LCTRL,
+    'Rctrl':pygame.K_RCTRL,
+    'Lshift':pygame.K_LSHIFT,
+    'Rshift':pygame.K_RSHIFT,
     'f1':pygame.K_F1,
     'f2':pygame.K_F2,
     'f3':pygame.K_F3,
@@ -56,9 +59,36 @@ keymap={
 }
 
 class InputAxis:
-    def __init__(self, positive:list, negative:list, event) -> None:
+    def __init__(self, name, positive:list, negative:list, event) -> None:
+        self.name = name
         self.positives = [keymap[i] for i in positive]
         self.negatives = [keymap[i] for i in negative]
         self.event = event
-        value = 0
+        self.value = 0
 
+    def update(self):
+        if self.event.type == pygame.KEYDOWN:
+            if self.event.key in self.positives:
+                self.value += 0.1
+            if self.event.key in self.negatives:
+                self.value -= 0.1
+
+            self.value = clamp(self.value, 0, 1)
+
+class Input:
+    def __init__(self) -> None:
+        self.axes = {}
+
+    def update(self):
+        for i in self.axes:
+            self.axes[i].update()
+
+    def get_axis(self, name):
+        try:
+            return self.axes[name].value
+        except KeyError as err:
+            print(err)
+            return None
+        
+    def add_axis(self, Axis:InputAxis):
+        self.add_axis[Axis.name] = Axis

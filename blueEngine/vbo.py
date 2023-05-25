@@ -1,5 +1,4 @@
 import numpy as np
-import moderngl
 
 class VBO:
     def __init__(self, ctx):
@@ -71,6 +70,3 @@ class CubeVBO(BaseVBO):
         vertex_data = np.hstack([normals, vertex_data])
         vertex_data = np.hstack([tex_coord_data, vertex_data])
         return vertex_data
-
-
-    
