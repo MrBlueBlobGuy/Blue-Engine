@@ -1,10 +1,12 @@
 from model import *
 import threading
+from input import Input, InputAxis
 
 class Scene:
     def __init__(self, app) -> None:
         self.app = app
         self.objects = []
+        self.input_axes = Input() 
         self.load()
 
     def add_object(self, object):
