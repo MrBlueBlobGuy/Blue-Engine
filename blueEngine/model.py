@@ -1,11 +1,12 @@
-import numpy as np
 import glm
 
 from errors import *
 from transfrom import Transfrom
+from gobject import GameObject
 
-class BaseModel:
-    def __init__(self, app, vao_name, tex_id, position=(0, 0, 0), rotation = (0, 0, 0), scale = (1, 1, 1)) -> None:
+class BaseModel(GameObject):
+    def __init__(self, app, vao_name, tex_id, parent = None, position=(0, 0, 0), rotation = (0, 0, 0), scale = (1, 1, 1)) -> None:
+        super().__init__(parent)
         self.app = app
         self.components = {'transform':Transfrom(self, scale, rotation, position)}
         self.m_model = self.get_model_matrix()
@@ -35,8 +36,8 @@ class BaseModel:
             raise ChildComponentNotExistsException(component)
 
 class Cube(BaseModel):
-    def __init__(self, app, vao_name='cube', tex_id=0, position = (0, 0, 0), rotation = (0, 0, 0), scale = (1, 1, 1)) -> None:
-        super().__init__(app, vao_name, tex_id, position, rotation, scale)
+    def __init__(self, app, parent = None, vao_name='cube', tex_id=0, position = (0, 0, 0), rotation = (0, 0, 0), scale = (1, 1, 1)) -> None:
+        super().__init__(app, vao_name, tex_id, parent, position, rotation, scale)
         self.on_init()
 
     def update(self):

@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='blue-engine',
-    version='0.0.3',
+    version='0.0.3.5',
     description='',
     long_description=readme(),
     long_description_content_type='text/markdown',
@@ -23,7 +23,7 @@ setup(
     ],
     packages=['blueEngine'],
     include_package_data=True,
-    install_requires=['pygame', 'moderngl', 'pyglm', 'numpy', 'noise'],
+    install_requires=['pygame', 'moderngl', 'pyglm', 'numpy', 'noise', 'lupa'],
     zip_safe=False
 )
     
