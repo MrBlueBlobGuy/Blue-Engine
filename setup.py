@@ -8,14 +8,14 @@ def readme():
 
 setup(
     name='blue-engine',
-    version='0.0.3.5',
+    version='0.0.4',
     description='',
     long_description=readme(),
     long_description_content_type='text/markdown',
     url='https://github.com/MrBlueBlobGuy/Blue-Engine',
     author='Debojyoti Ganguly',
     author_email='debojyotiganguly70@gmail.com',
-    license='Zlib',
+    license='MIT',
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",

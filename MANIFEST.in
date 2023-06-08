@@ -1,5 +1,8 @@
-images/blueenginelogo.png
-readme.md
-.projdata
-requirement.txt
-
+graft images
+include .projdata
+include requirement.txt
+graft shaders
+graft textures
+graft meshes
+graft tests
+global exclude *.py[cod]

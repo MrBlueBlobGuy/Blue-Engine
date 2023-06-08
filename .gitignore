@@ -9,3 +9,6 @@ blue_engine.egg-info/
 .github/
 sandbox/
 secrets.*
+.idea/
+*.obj.bin
+*.obj.json

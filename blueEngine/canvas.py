@@ -1,4 +1,4 @@
-from gobject import GameObject
+from game_object import GameObject
 
 
 class Canvas(GameObject):

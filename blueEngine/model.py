@@ -1,8 +1,9 @@
 import glm
+import moderngl
 
 from errors import *
 from transfrom import Transfrom
-from gobject import GameObject
+from game_object import GameObject
 
 class BaseModel(GameObject):
     def __init__(self, app, vao_name, tex_id, parent = None, position=(0, 0, 0), rotation = (0, 0, 0), scale = (1, 1, 1)) -> None:
@@ -12,8 +13,9 @@ class BaseModel(GameObject):
         self.m_model = self.get_model_matrix()
         self.tex_id = tex_id
         self.vao = app.mesh.vao.vaos[vao_name]
-        self.program = self.vao.program
+        self.program:moderngl.Program = self.vao.program
         self.camera = self.app.camera
+        self.lighting = 0
 
     def update(self): ...
 
@@ -29,6 +31,7 @@ class BaseModel(GameObject):
     def render(self):
         self.update()
         self.vao.render()
+
     def get_component(self, component:str):
         try:
             return self.components[component]
@@ -54,7 +57,6 @@ class Cube(BaseModel):
         self.program['m_proj'].write(self.camera.m_proj)
         self.program['m_view'].write(self.camera.m_view)
         self.program['m_model'].write(self.m_model)
-        
         self.program['light.position'].write(self.app.light.position)
         self.program['light.Ia'].write(self.app.light.Ia)
         self.program['light.Id'].write(self.app.light.Id)

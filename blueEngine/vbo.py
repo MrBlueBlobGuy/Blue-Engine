@@ -1,4 +1,5 @@
 import numpy as np
+import pywavefront
 
 class VBO:
     def __init__(self, ctx):
@@ -7,7 +8,6 @@ class VBO:
         
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
-
 
 class BaseVBO:
     def __init__(self, ctx) -> None:
@@ -70,3 +70,13 @@ class CubeVBO(BaseVBO):
         vertex_data = np.hstack([normals, vertex_data])
         vertex_data = np.hstack([tex_coord_data, vertex_data])
         return vertex_data
+
+class ModelVBO(BaseVBO):
+    def __init__(self, ctx:any = None, model_path = 'meshes/grey_cube.obj') -> None:
+        # super().__init__(ctx)
+        try:
+            model = pywavefront.Wavefront(model_path, cache=True)
+        except Exception as err:
+            print(err)
+
+        

@@ -8,6 +8,7 @@ from light import Light
 from model import *
 from scene import Scene
 
+
 class app:
     def __init__(self, size, title, framerate, flags=None, icon_path = 'images/BlueEngineLogo.png') -> None:
         self.size = size
@@ -45,7 +46,7 @@ class app:
         self.mesh = Mesh(self)
         self.scene = Scene(self)
   
-
+        print(self.scene.get_children())
         self.loop()
         
 
@@ -75,4 +76,4 @@ class app:
                 sys.exit(0)
 
 if __name__ == "__main__":
-    app((800, 450), "title", 60)
+    app_instance = app((800, 450), "title", 60)

@@ -1,4 +1,5 @@
 import pygame
+from game_object import GameObject
 from utils import clamp
 import json
 
@@ -75,7 +76,7 @@ class InputAxis:
 
             self.value = clamp(self.value, 0, 1)
 
-class Input:
+class Input(GameObject):
     def __init__(self) -> None:
         self.axes = {}
 

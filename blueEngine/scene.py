@@ -2,15 +2,16 @@ from model import *
 import threading
 from input import Input, InputAxis
 
-class Scene:
+class Scene(GameObject):
     def __init__(self, app) -> None:
+        super().__init__()
         self.app = app
         self.objects = []
-        self.input_axes = Input() 
         self.load()
 
     def add_object(self, object):
         self.objects.append(object)
+        self.add_child(object)
 
     def load(self):
         app = self.app
