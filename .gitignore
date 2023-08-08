@@ -1,6 +1,7 @@
 .venv/
 .vscode/
 .editorconfig
+.idea/
 docs/
 __pycache__/
 build/
@@ -9,3 +10,4 @@ blue_engine.egg-info/
 .github/
 sandbox/
 secrets.*
+# .idea/Blue-Engine.iml
